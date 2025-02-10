@@ -1,13 +1,13 @@
-const params = {
-    timeFrame : "day",
-    targetCalories : 2000,
-};
+async function getData(inputCalories) {
+    const params = {
+        timeFrame : "day",
+        targetCalories : inputCalories,
+    };
+    
+    const queryString = new URLSearchParams(params).toString();
+    
+    const url = `https://api.spoonacular.com/mealplanner/generate?timeFrame=day${queryString}`
 
-const queryString = new URLSearchParams(params).toString();
-
-const url = `https://api.spoonacular.com/mealplanner/generate?timeFrame=day${queryString}`
-
-async function getData() {
     try {
         const response = await fetch(url, {
             method: 'GET',
@@ -21,12 +21,12 @@ async function getData() {
         }
 
         const data = await response.json();
-        console.log('Meals:', data.meals);
-        console.log('Nutrients: ', data.nutrients);
-        console.log('Full response:', JSON.stringify(data, null, 2));
+        // console.log('Full response:', JSON.stringify(data, null, 2));
+        return data;
+
     } catch (error) {
         console.error('Error fetching data:', error);
     }
 }
 
-getData();
+// getData();
