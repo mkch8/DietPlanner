@@ -87,7 +87,7 @@ const TDEECalculator = () => {
 
   return (
     <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold text-center mb-4">TDEE Calculator</h2>
+      <h2 className="text-2xl font-bold text-center mb-4">Calorie Calculator</h2>
       <form className="flex flex-col gap-4">
         {/* Weight Input */}
         <div className="grid grid-cols-2 items-center">

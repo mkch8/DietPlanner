@@ -30,5 +30,3 @@ async function getData(inputCalories) {
 }
 
 export default getData;
-
-// getData();
