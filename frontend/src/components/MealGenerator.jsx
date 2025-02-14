@@ -1,11 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 
 const MealGenerator = () => {
-    const [calories, setCalories] = useState ('');
+    const [calories, setCalories] = useState('');
+    const [mealPlan, setMealPlan] = useState(null);
 
-    const fetchMealPlan = (calories) => {
-        
-    }
+    const fetchMealPlan = async () => {
+        try {
+            const response = await axios.post(
+                'http://localhost:5555/getMeals',
+                {inputCalories: calories}
+            )
+
+            console.log("Full response", response);
+            console.log("Response data", response.data);
+
+            setMealPlan(response.data.mealPlan)
+            // console.log(mealPlan)
+        } catch (err) {
+            console.log("Error fetching meal plan", err);
+        }
+    };
 
     return (
         <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
@@ -20,6 +35,15 @@ const MealGenerator = () => {
             <button onClick={fetchMealPlan} className="bg-green-500 text-white p-3 rounded w-full">
                 Generate Meal Plan
             </button>
+            {mealPlan && (
+                <div>
+                    <ul>
+                        {mealPlan.meals.map((meal, index) => (
+                            <li key={index} className="mt-2">{meal.title}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </div>
     );
 };

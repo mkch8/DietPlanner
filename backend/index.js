@@ -2,8 +2,11 @@ import express, { response } from "express";
 import { PORT, mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
 import getData from "./services/spoonacular.js";
+import cors from 'cors'
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 
