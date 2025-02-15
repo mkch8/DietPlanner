@@ -42,6 +42,15 @@ const MealGenerator = () => {
                             <li key={index} className="mt-2">{meal.title}</li>
                         ))}
                     </ul>
+                    <div>
+                        <h2>Meal Plan Nutrition</h2>
+                        <ul>
+                            <li>Total Calories: {mealPlan.nutrients.calories}</li>
+                            <li>Carbs: {mealPlan.nutrients.carbohydrates}</li>
+                            <li>Fat: {mealPlan.nutrients.fat}</li>
+                            <li>Protein: {mealPlan.nutrients.protein}</li>
+                        </ul>
+                    </div>
                 </div>
             )}
         </div>
