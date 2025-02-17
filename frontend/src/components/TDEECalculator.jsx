@@ -198,9 +198,11 @@ const TDEECalculator = () => {
         )}
 
         {/* Calculate Button */}
-        <button onClick={calculateTDEE} className="bg-blue-500 text-white p-3 rounded w-full">
-          Calculate TDEE
-        </button>
+        <div className='flex justify-center gap-4'>
+          <button onClick={calculateTDEE} className="bg-blue-500 text-center text-white p-3 rounded-md w-auto">
+            Calculate
+          </button>
+        </div>
 
         {/* Display TDEE */}
         {tdee && <p className="text-center text-lg font-bold mt-4">Your goal is <span style={{color: '#ff0000'}}>{tdee}</span> calories per day!</p>}

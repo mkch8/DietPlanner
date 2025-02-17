@@ -23,8 +23,11 @@ const MealGenerator = () => {
     };
 
     return (
-        <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
-            <h1>Meal Generator</h1>
+        <div className="flex flex-col gap-4 max-w-lg mx-auto bg-white bg-white p-6 rounded-lg shadow-md">
+            <h1 className='flex justify-center'>
+                Meal Generator
+            </h1>
+            <p>Input your daily calorie amount below to generate a meal plan for the day. Not sure what it is? Use the calorie calculator below!</p>
             <input
                 type = "number"
                 name = "calories"
@@ -32,9 +35,11 @@ const MealGenerator = () => {
                 className="border border-gray-300 p-2 rounded w-full"
                 onChange={(event) => setCalories(event.target.value)}
             />
-            <button onClick={fetchMealPlan} className="bg-green-500 text-white p-3 rounded w-full">
-                Generate Meal Plan
-            </button>
+            <div className='flex justify-center'>
+                <button onClick={fetchMealPlan} className="bg-green-500 text-white p-3 rounded w-50">
+                    Generate Meal Plan
+                </button>
+            </div>
             {mealPlan && (
                 <div>
                     <ul>
