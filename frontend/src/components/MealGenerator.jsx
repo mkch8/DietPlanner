@@ -24,9 +24,9 @@ const MealGenerator = () => {
 
     return (
         <div className="flex flex-col gap-4 max-w-lg mx-auto bg-white bg-white p-6 rounded-lg shadow-md">
-            <h1 className='flex justify-center'>
+            <h2 className="text-2xl font-bold text-center mb-4">
                 Meal Generator
-            </h1>
+            </h2>
             <p>Input your daily calorie amount below to generate a meal plan for the day. Not sure what it is? Use the calorie calculator below!</p>
             <input
                 type = "number"
@@ -42,11 +42,23 @@ const MealGenerator = () => {
             </div>
             {mealPlan && (
                 <div>
-                    <ul>
+                    {/* <ul>
                         {mealPlan.meals.map((meal, index) => (
                             <li key={index} className="mt-2">{meal.title}</li>
                         ))}
-                    </ul>
+                    </ul> */}
+                    {mealPlan.meals.map((meal, index) => (
+                        <div key={index} className="mt-2">
+                            <div>
+                                {meal.title}
+                            </div>
+                            <div>
+                            <img src={`https://img.spoonacular.com/recipes/${meal.image}`} alt="food" />
+                            </div>
+
+                        </div>
+                    ))}
+
                     <div>
                         <h2>Meal Plan Nutrition</h2>
                         <ul>
