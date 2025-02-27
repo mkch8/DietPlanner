@@ -106,9 +106,9 @@ const TDEECalculator = () => {
       <h2 className="text-2xl font-bold text-center mb-4">Calorie Calculator</h2>
       <form className="flex flex-col gap-4">
         {/* Gender Input */}
-        <div className="flex justify-center">
+        <div className="grid grid-cols-2 items-center">
             <label className="text-right pr-4">Gender</label>
-            <div className="">
+            <div className="flex gap-4">
               <button 
                 type="button"
                 className={`p-2 rounded w-20 ${
