@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const TDEECalculator = () => {
   const [formData, setFormData] = useState({
+    gender: 'male',
     weight: '',
     height: '',
     age: '',
@@ -38,10 +39,17 @@ const TDEECalculator = () => {
     });
   };
 
+  const handleGenderSelection = (gender) => {
+    setFormData({
+      ...formData,
+      gender: gender
+    })
+  }
+
   const calculateTDEE = (e) => {
     if (e) e.preventDefault();
 
-    const { weight, height, age, activityLevel, goal, goalAmount } = formData;
+    const { gender, weight, height, age, activityLevel, goal, goalAmount } = formData;
 
     // Ensure valid inputs
     if (!weight || !height || !age) {
@@ -54,9 +62,17 @@ const TDEECalculator = () => {
     const heightNum = parseFloat(height);
     const ageNum = parseInt(age);
 
-    // Calculate BMR (Assuming Male for now, can extend for Female)
-    const BMR = 10 * weightNum + 6.25 * heightNum - 5 * ageNum + 5;
+    // Calculate BMR
+    let BMR = 10 * weightNum + 6.25 * heightNum - 5 * ageNum;
     console.log(BMR)
+
+    // Adjust for gender
+    if (gender === 'male') {
+      BMR = BMR + 5
+    }
+    else {
+      BMR = BMR - 161
+    };
 
     // Activity level multipliers
     const activityMultipliers = {
@@ -89,6 +105,31 @@ const TDEECalculator = () => {
     <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
       <h2 className="text-2xl font-bold text-center mb-4">Calorie Calculator</h2>
       <form className="flex flex-col gap-4">
+        {/* Gender Input */}
+        <div className="flex justify-center">
+            <label className="text-right pr-4">Gender</label>
+            <div className="">
+              <button 
+                type="button"
+                className={`p-2 rounded w-20 ${
+                  formData.gender === 'male' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+                }`}
+                onClick={() => handleGenderSelection('male')}
+              >
+                Male
+              </button>
+              <button 
+                type="button"
+                className={`p-2 rounded w-20 ${
+                  formData.gender === 'female' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+                }`}
+                onClick={() => handleGenderSelection('female')}
+              >
+                Female
+              </button>
+            </div>
+        </div>
+
         {/* Weight Input */}
         <div className="grid grid-cols-2 items-center">
             <label className="text-right pr-4">Weight (kg)</label>
