@@ -35,25 +35,21 @@ const MealGenerator = () => {
                 className="border border-gray-300 p-2 rounded w-full"
                 onChange={(event) => setCalories(event.target.value)}
             />
-            <div className='flex justify-center'>
-                <button onClick={fetchMealPlan} className="bg-green-500 text-white p-3 rounded w-50">
+            <div className='flex justify-center font-bold'>
+                <button onClick={fetchMealPlan} className="bg-green-800 hover:bg-sky-700 text-white p-3 rounded w-50">
                     Generate Meal Plan
                 </button>
             </div>
             {mealPlan && (
                 <div>
-                    {/* <ul>
-                        {mealPlan.meals.map((meal, index) => (
-                            <li key={index} className="mt-2">{meal.title}</li>
-                        ))}
-                    </ul> */}
                     {mealPlan.meals.map((meal, index) => (
                         <div key={index} className="mt-2">
                             <div>
-                                {meal.title}
+                                <a href={meal.sourceUrl} target='_blank' rel='noopener noreferrer'>{meal.title}</a>
                             </div>
                             <div>
-                            <img src={`https://img.spoonacular.com/recipes/${meal.image}`} alt="food" />
+                                <img className='w-75 h-50'
+                                    src={`https://img.spoonacular.com/recipes/${meal.image}`} alt="food" />
                             </div>
 
                         </div>
@@ -62,10 +58,10 @@ const MealGenerator = () => {
                     <div>
                         <h2>Meal Plan Nutrition</h2>
                         <ul>
-                            <li>Total Calories: {mealPlan.nutrients.calories}</li>
-                            <li>Carbs: {mealPlan.nutrients.carbohydrates}</li>
-                            <li>Fat: {mealPlan.nutrients.fat}</li>
-                            <li>Protein: {mealPlan.nutrients.protein}</li>
+                            <li>Total Calories: {Math.round(mealPlan.nutrients.calories)}</li>
+                            <li>Carbs: {Math.round(mealPlan.nutrients.carbohydrates)}</li>
+                            <li>Fat: {Math.round(mealPlan.nutrients.fat)}</li>
+                            <li>Protein: {Math.round(mealPlan.nutrients.protein)}</li>
                         </ul>
                     </div>
                 </div>

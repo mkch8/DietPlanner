@@ -6,7 +6,7 @@ import MealGenerator from './components/MealGenerator';
 
 const App = () => {
   return (
-    <div className="flex flex-col space-y-6 bg-blue-500 min-h-screen">
+    <div className="flex flex-col space-y-6 min-h-screen font-roboto">
       <div>
         <Header />
       </div>
